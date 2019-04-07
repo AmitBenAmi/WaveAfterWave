@@ -1,0 +1,11 @@
+# VSCode files
+.vscode/*
+
+# Python files unnecessary
+__pycache*
+
+# Test files
+**/*.wav
+
+# Windows bash files
+bash.exe*
