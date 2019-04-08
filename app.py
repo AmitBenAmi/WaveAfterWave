@@ -34,4 +34,4 @@ def getSpeechFromText():
         return str(ex) + '\n', status.HTTP_500_INTERNAL_SERVER_ERROR
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    app.run(host='0.0.0.0', port=5000)
