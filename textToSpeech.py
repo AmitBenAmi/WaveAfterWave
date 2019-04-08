@@ -10,7 +10,7 @@ def getSpeechFromText(text):
     text_synthezation_results = text_to_speech.synthesize(
         text=text, 
         accept='audio/wav', 
-        voice='en-US_AllisonV2Voice'
+        voice='en-US_MichaelVoice'
     ).get_result().content
 
     return text_synthezation_results
