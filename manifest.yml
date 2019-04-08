@@ -1,0 +1,5 @@
+---
+application:
+  - name: WaveAfterWave
+    random-route: true
+    memory: 128M
