@@ -1,7 +1,7 @@
 FROM python:latest
 
 COPY ./requirements.txt /app/requirements.txt
-COPY app.py textToSpeech.py speechToText.py /app/
+COPY app.py textToSpeech.py speechToText.py compressionConvert.py word_to_bytes.json /app/
 
 WORKDIR /app
 RUN pip install -r requirements.txt
