@@ -1,7 +1,7 @@
 FROM python:latest
 
 COPY ./requirements.txt /app/requirements.txt
-COPY ./*.py /app/*.py
+COPY app.py textToSpeech.py speechToText.py /app/
 
 WORKDIR /app
 
