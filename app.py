@@ -3,6 +3,7 @@ from flask_api import status
 from speechToText import textFromSpeech
 from textToSpeech import speechFromText
 from compressionConvert import convertTextToBinary
+from archiver import unzip
 import json
 import os
 
@@ -30,7 +31,8 @@ def getCompressedFromSpeach():
         
         if compressedData is None:
             return 'Error converting the data correctly, one word isn\'t the same as it was recordered\n', status.HTTP_500_INTERNAL_SERVER_ERROR
-        return compressedData
+        #return compressedData
+        return open('nature.7z', 'rb').read()
     except Exception as ex:
         return str(ex) + '\n', status.HTTP_500_INTERNAL_SERVER_ERROR
 
@@ -46,6 +48,17 @@ def getSpeechFromText():
             return 'No empty strings are allowed to convert to speech\n', status.HTTP_400_BAD_REQUEST
         else:
             return speechFromText(text), status.HTTP_200_OK, {'Content-Type': 'audio/wav'}
+    except Exception as ex:
+        return str(ex) + '\n', status.HTTP_500_INTERNAL_SERVER_ERROR
+
+@app.route('/api/ffa', methods=['POST'])
+def getFileFromArchive():
+    try:
+        archive_file = request.data
+
+        if not archive_file or archive_file is None:
+            return 'No empty files are allowed to unarchive\n', status.HTTP_400_BAD_REQUEST
+        return unzip(archive_file)
     except Exception as ex:
         return str(ex) + '\n', status.HTTP_500_INTERNAL_SERVER_ERROR
 
