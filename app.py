@@ -31,3 +31,6 @@ def getSpeechFromText():
             return speechFromText(text), status.HTTP_200_OK, {'Content-Type': 'audio/wav'}
     except Exception as ex:
         return str(ex) + '\n', status.HTTP_500_INTERNAL_SERVER_ERROR
+
+if __name__ == '__main__':
+    app.run(port=443)
