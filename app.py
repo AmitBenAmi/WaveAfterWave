@@ -36,7 +36,7 @@ def getCompressedFromSpeach():
         return str(ex) + '\n', status.HTTP_500_INTERNAL_SERVER_ERROR
 
 @app.route('/api/yr', methods=['POST'])
-def getCompressedFromSpeach():
+def getCompressedFromSpeachForYosef():
     try:
         audio_file_data = request.data
 
