@@ -1,7 +1,8 @@
-import zipfile, os, shutil
+import zipfile, os, shutil, json
 
 extraction_dir_name = 'Extraction'
 zip_file_name = 'zipToExtract.zip'
+delimeter = '@@##$$%%^^&&'
 
 def unzip(zip_file):
     deleteArchiveFile()
@@ -14,15 +15,19 @@ def unzip(zip_file):
     zip_ref.extractall(extraction_dir_name)
     zip_ref.close()
 
-    extracted_file = None
+    data = bytearray()
 
     for filename in os.listdir(extraction_dir_name):
+        data.extend(str.encode(filename))
+        data.extend(str.encode(delimeter))
         extracted_file = open(extraction_dir_name + '\\' + filename, 'rb').read()
+        if not extracted_file or extracted_file is None:
+            return None
+        data.extend(extracted_file)
 
     deleteArchiveFile()
     deleteExtractionDirectory()
-
-    return extracted_file
+    return data
 
 def deleteArchiveFile():
     if os.path.isfile(zip_file_name):

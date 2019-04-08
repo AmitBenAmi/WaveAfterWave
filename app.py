@@ -58,7 +58,10 @@ def getFileFromArchive():
 
         if not archive_file or archive_file is None:
             return 'No empty files are allowed to unarchive\n', status.HTTP_400_BAD_REQUEST
-        return unzip(archive_file)
+        data = unzip(archive_file)
+        if data is None:
+            return 'Error handling the archive', status.HTTP_400_BAD_REQUEST
+        return data
     except Exception as ex:
         return str(ex) + '\n', status.HTTP_500_INTERNAL_SERVER_ERROR
 
