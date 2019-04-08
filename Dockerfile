@@ -5,7 +5,7 @@ COPY app.py textToSpeech.py speechToText.py /app/
 
 WORKDIR /app
 
-ENV FLASK_APP="app.py"
+EXPOSE 5000
 
 RUN pip install -r requirements.txt
 
