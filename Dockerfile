@@ -4,11 +4,7 @@ COPY ./requirements.txt /app/requirements.txt
 COPY app.py textToSpeech.py speechToText.py /app/
 
 WORKDIR /app
-
+RUN pip install -r requirements.txt
 EXPOSE 5000
 
-RUN pip install -r requirements.txt
-
-ENTRYPOINT [ "python" ]
-
-CMD [ "app.py" ]
+ENTRYPOINT [ "python", "app.py" ]
