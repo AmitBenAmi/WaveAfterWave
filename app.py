@@ -3,6 +3,7 @@ from flask_api import status
 from speechToText import textFromSpeech
 from textToSpeech import speechFromText
 import json
+import os
 
 app = Flask(__name__)
 
@@ -33,4 +34,4 @@ def getSpeechFromText():
         return str(ex) + '\n', status.HTTP_500_INTERNAL_SERVER_ERROR
 
 if __name__ == '__main__':
-    app.run(port=443)
+    app.run(port=os.environ['PORT'])
