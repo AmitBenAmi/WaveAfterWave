@@ -9,6 +9,6 @@ ENV FLASK_APP="app.py"
 
 RUN pip install -r requirements.txt
 
-ENTRYPOINT [ "flask" ]
+ENTRYPOINT [ "python" ]
 
-CMD [ "run" ]
+CMD [ "app.py" ]
